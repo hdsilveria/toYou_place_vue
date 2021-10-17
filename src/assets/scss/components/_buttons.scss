@@ -1,0 +1,10 @@
+.btn {
+  &:focus {
+    box-shadow: none !important;
+  }
+}
+
+.btn-primary {
+  background-color: $menu-color2 !important;
+  border: $primary !important;
+}
