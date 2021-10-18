@@ -8,3 +8,18 @@
   background-color: $menu-color2 !important;
   border: $primary !important;
 }
+
+.btn-outline-primary {
+  border: 1px solid white !important;
+  color: white;
+
+  &:hover {
+    color: $menu-color2;
+    background: white;
+  }
+
+  &:active {
+    background-color: white !important;
+    color: $menu-color2;
+  }
+}

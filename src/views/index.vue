@@ -7,7 +7,7 @@
     >
       <b-col
         class="main-colum"
-        md="9"
+        md="10"
       >
       <b-row class="mt-4" align-h="center">
             <b-col md="4" class="item_visu p-4" v-for="item in items" :key="item.id">
@@ -17,8 +17,8 @@
                     <b-img class="img_prod" :src="item.photo" alt="imagem do produto" />
                   </div>
                 </b-col>
-                <b-col md="6" class="text-center">
-                  <b-row>
+                <b-col md="7" class="text-center">
+                  <b-row class="text-left">
                     {{item.item}}
                   </b-row>
                   <b-row>
@@ -32,7 +32,7 @@
                     </small>
                   </b-row>
                   <b-row class="mt-2">
-                    <b-button variant="primary">
+                    <b-button variant="primary" @click="$router.push({path: `/produto/${item._id}`})">
                       <span>Comprar</span>
                     </b-button>
                   </b-row>
@@ -78,10 +78,6 @@ export default {
 
 .main-area {
   height: 85vh;
-}
-
-.item_visu {
-  // border: 2px solid red;
 }
 
 .img_prod {

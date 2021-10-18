@@ -1,0 +1,19 @@
+.product-page {
+  margin-top: 80px !important;
+}
+
+.img-one-prod {
+  width: 190px;
+  height: 190px;
+}
+
+.box-payment{ 
+  @include color-main();
+  width: 100%;
+  color: white;
+  text-align: center;
+}
+
+.value {
+  font-size: 16pt;
+}
