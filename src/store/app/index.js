@@ -31,6 +31,12 @@ export default {
     SET_FAV(state, val){
       state.fav.push(val)
     },
+    REMOVE_FAV(state, val){
+      state.fav.splice(state.fav.indexOf(val), 1)
+    },
+    REMOVE_CART(state, val){
+      state.cart.splice(state.cart.indexOf(val), 1)
+    },
     SET_ONE_PRODUCT(state, val){
       state.product = val
     },   
@@ -52,6 +58,14 @@ export default {
 
     addProductToFav({commit}, val){
       commit('SET_FAV', val)
+    },
+
+    removeProducFav({commit}, val){
+      commit('REMOVE_FAV', val)
+    },
+
+    removeProducCart({commit}, val){
+      commit('REMOVE_CART', val)
     },
 
     setProducts({commit}){

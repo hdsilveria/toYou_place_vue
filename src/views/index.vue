@@ -33,7 +33,7 @@
                   </b-row>
                   <b-row class="mt-2">
                     <b-button variant="primary" @click="$router.push({path: `/produto/${item._id}`})">
-                      <span>Comprar</span>
+                      <span>Ver Detalhes</span>
                     </b-button>
                   </b-row>
                 </b-col>
