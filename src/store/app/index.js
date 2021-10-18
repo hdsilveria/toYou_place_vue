@@ -32,10 +32,12 @@ export default {
       state.fav.push(val)
     },
     REMOVE_FAV(state, val){
-      state.fav.splice(state.fav.indexOf(val), 1)
+      let indice = state.fav.findIndex(arr => arr._id == val)
+      state.fav.splice(indice, 1)
     },
     REMOVE_CART(state, val){
-      state.cart.splice(state.cart.indexOf(val), 1)
+      let indice = state.cart.findIndex(arr => arr._id == val)
+      state.cart.splice(indice, 1)
     },
     SET_ONE_PRODUCT(state, val){
       state.product = val

@@ -13,7 +13,7 @@
       <b-row>
         <b-button variant="primary" @click="$router.push({name:'index'})">
           Voltar
-        </b-button>      
+        </b-button> 
       </b-row><br>
 
           <b-row align-h="center">

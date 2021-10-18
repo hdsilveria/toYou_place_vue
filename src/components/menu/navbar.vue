@@ -39,29 +39,35 @@
           </div>
           <b-img style="width: 30px;" src="../../assets/img/cart.png" />
         </template>
-        <b-row v-for="prod in getCart" :key="prod.id" class="text-center">
+        <span v-if="getCart == ''" style="margin-left: 30px;">
+          Não há items
+        </span>
+        <b-row v-for="prod in getCart" :key="prod.id">
           <b-col>
           <span>
-            {{prod.item.substr(0,17)}}...
+            {{prod.item.length > 17 ? prod.item.substr(0,17) + '...' : prod.item }}
           </span>
           </b-col>
         </b-row>
         <b-dropdown-divider />
-        &nbsp;&nbsp;&nbsp;<span>Ver meu Carrinho</span>
+        &nbsp;&nbsp;&nbsp;<span style="cursor: pointer;" @click="$router.push({name:'myCart'})">Ver meu Carrinho</span>
       </b-dropdown>
 
-      <b-dropdown no-caret menu-class="w-200">
+      <b-dropdown no-caret menu-class="w-100">
         <template #button-content>
           <div class="countCart" v-if="getFav.length > 0">
             {{getFav.length}}
           </div>
           <b-img style="width: 30px;" src="../../assets/img/favorito.png" />
         </template>
-        <b-row v-for="fav in getFav" :key="fav.id" class="text-center">
+        <span v-if="getFav == ''" style="margin-left: 30px;">
+          Não há items
+        </span>
+        <b-row v-for="fav in getFav" :key="fav.id">
           <b-col>
-          <span>
-            {{fav.item.substr(0,17) ? fav.item.substr(0,17) : 'Não há produtos'}}...
-          </span>
+            <span>
+              {{fav.item.length > 17 ? fav.item.substr(0,17) + '...' : fav.item }}
+            </span>
           </b-col>
         </b-row>
         <b-dropdown-divider />

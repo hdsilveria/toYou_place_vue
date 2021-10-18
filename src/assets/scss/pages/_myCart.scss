@@ -1,0 +1,25 @@
+.cart_page {
+  margin-top: 80px;
+}
+
+.value-item {
+  font-size: 13pt;
+  color: $menu-color2;
+}
+
+.aba-pay {
+  @include color-main();
+  position: fixed; 
+  z-index: 99; 
+  width: 165px; 
+  height: 70vh;
+  border-radius: 10px; 
+  left: 0%; 
+  transition: 1s;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.267);
+  font-size: 14pt;
+
+  &:hover {
+    width: 365px;
+  }
+}

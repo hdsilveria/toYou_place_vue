@@ -9,6 +9,15 @@ export default [
     },
   },
   {
+    path: '/meu-carrinho',
+    name: 'myCart',
+    component: () => import('./../views/myCart.vue'),
+    meta: {
+      menuBar: true,
+      authRequired: false,
+    },
+  },
+  {
     path: '/produto/:id',
     name: 'product',
     component: () => import('./../views/item.vue'),
