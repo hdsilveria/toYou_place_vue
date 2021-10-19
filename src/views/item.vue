@@ -59,8 +59,14 @@
                   </b-row>
                   <b-row align-h="center" class="mt-2">
                     <b-col cols="auto" class="p-0">
-                      <b-button variant="outline-primary">
+                      <b-button 
+                      variant="outline-primary" 
+                      :disabled="cart[0]" 
+                      @click="addtoCartAndPush(getOneProd)"
+                      >
+                      <span style="color: white;">
                         Comprar Agora
+                      </span>
                       </b-button>
                     </b-col>
                     <b-col cols="auto" class="p-0">&nbsp;
@@ -125,6 +131,13 @@ export default {
       this.setOneProd(this.$route.params.id).then(() => {
         this.fav = this.getFav.filter(arr => arr._id === this.$route.params.id)
         this.cart = this.getCart.filter(arr => arr._id === this.$route.params.id)
+      })
+    },
+
+    addtoCartAndPush(val){
+      this.addProductToCart(val).then(() => {
+          this.pushData()
+          this.$router.push({name: 'myCart'})
       })
     },
 

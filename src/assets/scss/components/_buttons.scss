@@ -6,7 +6,8 @@
 }
 
 .btn-primary {
-  background-color: $menu-color2 !important;
+  @include color-main();
+  // background-color: $menu-color2 !important;
   border: $primary !important;
 }
 
@@ -23,4 +24,8 @@
     background-color: white !important;
     color: $menu-color2;
   }
+}
+
+.text-primary {
+  color: $menu-color2 !important;
 }

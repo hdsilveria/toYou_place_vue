@@ -14,25 +14,35 @@
               <h3>Meu Carrinho</h3>
             </b-col>
           </b-row>
+          <b-row align-h="center" class="cart_page" v-if="getCart == ''">
+            <b-col class="text-center">
+              <strong>Não há produtos no seu carrinho!</strong>
+            </b-col>
+          </b-row>
           <b-row align-h="center" class="cart_page" v-for="item in getCart" :key="item._id">
-            <b-col class="text-center" md="6">
+            <b-col class="text-center" md="5">
               <b-row>
                 <b-col md="auto">
-                  <b-img style="width: 120px; height: 120px;" :src="item.photo" />
+                  <b-img style="width: 120px; height: 120px; cursor: pointer;" @click="$router.push({path: `/produto/${item._id}`})" :src="item.photo" />
                 </b-col>
-                <b-col align-self="center" md="auto">
+                <b-col align-self="center" md="7">
                   <strong style="cursor: pointer;"  @click="$router.push({path: `/produto/${item._id}`})">
                     {{item.item }}
                   </strong>
                 </b-col>
               </b-row>
             </b-col>
-            <b-col md="2" align-self="center">
-              <b-row >
-                  <b-form-spinbutton id="sb-wrap" wrap min="1" max="25" v-model="item.qtd" />
+            <b-col md="3" align-self="center">
+              <b-row>
+                <b-col md="auto" align-self="center">
+                  <b-icon icon="trash-fill" font-scale="2" variant="primary" aria-hidden="true" style="cursor: pointer;" @click="removeItem(item._id)" />
+                </b-col>
+                <b-col>
+                  <b-form-spinbutton id="sb-wrap" wrap min="1" max="30" v-model="item.qtd" />
+                </b-col>
               </b-row>
             </b-col>
-            <b-col md="4" align-self="center" class="text-center">
+            <b-col md="3" align-self="center" class="text-center">
                 <strong class="value-item text-center">
                  R$ {{ (item.price * item.qtd).toFixed(2).replace('.', ',') }}
                  <!-- <input type="number" v-model="item.price"> -->
@@ -43,7 +53,7 @@
           <b-row align-h="end">
             <b-col md="4">
               <span class="total-value">Valor do Frete </span><br>
-              <strong style="font-size: 21pt;" class="value-item">R$ 298</strong>
+              <strong style="font-size: 21pt;" class="value-item"  v-if="getCart !== ''">R$ 298</strong>
             </b-col>
 
             <b-col md="4">
@@ -57,7 +67,7 @@
             </b-col>
         
             <b-col md="4" class="text-center" align-self="center">
-              <b-button variant="primary" class="continue-pay">
+              <b-button variant="primary" class="continue-pay" :disabled="getCart == ''">
                 <span>Continuar Compra</span>
               </b-button>
             </b-col>
@@ -106,6 +116,12 @@ export default {
       addProductToCart: 'app/addProductToCart',
       removeProductCart: 'app/removeProducCart'
     }),
+
+    removeItem(val){
+      this.$confirm("Deseja remover item do Carrinho?").then(()=> {
+        this.removeProductCart(val)
+      })
+    }
   }
 }
 
