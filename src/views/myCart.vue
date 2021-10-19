@@ -38,12 +38,18 @@
                   <b-icon icon="trash-fill" font-scale="2" variant="primary" aria-hidden="true" style="cursor: pointer;" @click="removeItem(item._id)" />
                 </b-col>
                 <b-col>
-                  <b-form-spinbutton id="sb-wrap" wrap min="1" max="30" v-model="item.qtd" />
+                  <b-form-spinbutton 
+                  id="sb-wrap" 
+                  wrap 
+                  min="1" 
+                  max="30" 
+                  v-model="item.qtd" 
+                  @change="getValues(item)" />
                 </b-col>
               </b-row>
             </b-col>
             <b-col md="3" align-self="center" class="text-center">
-                <strong class="value-item text-center">
+                <strong class="value-item text-center value-product">
                  R$ {{ (item.price * item.qtd).toFixed(2).replace('.', ',') }}
                  <!-- <input type="number" v-model="item.price"> -->
                 </strong>
@@ -59,9 +65,8 @@
             <b-col md="4">
                 <span class="total-value">Valor total do pedido </span><br>
                 <strong style="font-size: 21pt;" class="value-item">
-                  <!-- R${{(items.map(arr => arr.price).reduce((total, soma) => total + soma, 0 + 0))}} -->
                   R$ {{ 
-                    (getCart.map(arr => arr.price).reduce((total, soma) => total + soma, 0 + 0).toFixed(2)).replace('.', ',') 
+                    (getCart.map(arr => arr.price * arr.qtd).reduce((total, soma) => total + soma, 0 + 0).toFixed(2)).replace('.', ',') 
                   }}
                 </strong>
             </b-col>
@@ -82,40 +87,33 @@
 <script>
 
 import { mapActions, mapGetters } from 'vuex'
-// import abaPayment from '../components/abaPayment.vue'
 
 export default {
     computed: {
     ...mapGetters({
       getCart: 'app/getCart',
-    }),
-  },
-
-  components: {
-    // abaPayment
-  },
-
-  created(){
-    // this.getCart.map(arr => this.items.push({
-    //   item: arr.item,
-    //   price: arr.price * arr.qtd,
-    //   qtd: arr.qtd,
-    //   photo: arr.photo
-    // }))
+    })
   },
 
   data(){
     return {
       qtdItem: 1,
-      items: []
+      items: [],
+      totalCart: []
     }
   },
 
   methods: {
     ...mapActions({
       addProductToCart: 'app/addProductToCart',
-      removeProductCart: 'app/removeProducCart'
+      removeProductCart: 'app/removeProducCart',
+      editCart: 'app/editCart'
     }),
+
+    getValues(val){
+      let indice = this.getCart.findIndex(arr => arr._id == val._id)
+      this.editCart({indice, qtd: val.qtd})
+    },
 
     removeItem(val){
       this.$confirm("Deseja remover item do Carrinho?").then(()=> {

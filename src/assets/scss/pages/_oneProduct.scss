@@ -18,3 +18,19 @@
 .value {
   font-size: 16pt;
 }
+
+.carousel-control-prev{
+  margin: -35px !important;
+  @include color-main();
+  height: 40px;
+  width: 20px;
+  top: 100px;
+}
+
+.carousel-control-next {
+  margin: -35px !important;
+  @include color-main();
+  height: 40px;
+  width: 20px;
+  top: 100px;
+}

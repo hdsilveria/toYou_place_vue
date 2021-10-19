@@ -39,6 +39,9 @@ export default {
       let indice = state.cart.findIndex(arr => arr._id == val)
       state.cart.splice(indice, 1)
     },
+    EDIT_CART(state, val){
+      state.cart[val.indice].qtd = val.qtd
+    },
     SET_ONE_PRODUCT(state, val){
       state.product = val
     },   
@@ -46,6 +49,10 @@ export default {
   actions: {
     setApiInCall({commit}, val){
       commit('SET_API_IN_CALL', val)
+    },
+
+    editCart({commit}, val){
+      commit('EDIT_CART', val)
     },
 
     setOneProduct({commit}, val){
