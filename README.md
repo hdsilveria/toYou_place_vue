@@ -3,15 +3,15 @@
 <h2> Instalação local</h2>
 <p>Dentro do diretorio, Deve ser feito a instalação das dependencias com o seguinte comando:</p>
 <p><i>- npm install;</i></p>
-<p><i>- Necessario utilizar o back-end do To_You_Place em paralelo;</i></p>
+<p><i>- Necessario utilizar o back-end do toYou_Place_backend em paralelo;</i></p>
 
 <strong>Libs utilizadas:</strong><br>
-<p>Vue-router;</p>
-<p>Vue-simple-alert;</p>
-<p>Bootstrap-vue;</p>
-<p>Axios;</p>
-<p>Vuex;</p>
-<p>Vuex-persist;</p>
+<p>- Vue-router;</p>
+<p>- Vue-simple-alert;</p>
+<p>- Bootstrap-vue;</p>
+<p>- Axios;</p>
+<p>- Vuex;</p>
+<p>- Vuex-persist;</p>
 
 <br>
 <img src="./git_img/index.png"><br>
