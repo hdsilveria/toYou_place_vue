@@ -1,24 +1,23 @@
-# toyou_place
+<h1>To you Place</h1>
 
-## Project setup
-```
-npm install
-```
+<h2> Instalação local</h2>
+<p>Dentro do diretorio, Deve ser feito a instalação das dependencias com o seguinte comando:</p>
+<p><i>- npm install;</i></p>
+<p><i>- Necessario utilizar o back-end do To_You_Place em paralelo;</i></p>
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+<strong>Libs utilizadas:</strong><br>
+<p>Vue-router;</p>
+<p>Vue-simple-alert;</p>
+<p>Bootstrap-vue;</p>
+<p>Axios;</p>
+<p>Vuex;</p>
+<p>Vuex-persist;</p>
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+<br>
+<img src="./git_img/index.png"><br>
+<img src="./git_img/produto.png"><br>
+<img src="./git_img/favorito.png"><br>
+<img src="./git_img/confirmação_carrinho.png"><br>
+<img src="./git_img/icon_carrinho.png"><br>
+<img src="./git_img/meu_carrinho.png"><br>
+<img src="./git_img/valores_meu_carrinho.png">
