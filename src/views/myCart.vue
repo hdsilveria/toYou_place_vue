@@ -23,7 +23,7 @@
             <b-col class="text-center" md="5">
               <b-row>
                 <b-col md="auto">
-                  <b-img style="width: 120px; height: 120px; cursor: pointer;" @click="$router.push({path: `/produto/${item._id}`})" :src="item.photo" />
+                  <b-img style="width: 120px; height: 120px; cursor: pointer;" @click="$router.push({path: `/produto/${item._id}`})" :src="item.photo[0]" />
                 </b-col>
                 <b-col align-self="center" md="7">
                   <strong style="cursor: pointer;"  @click="$router.push({path: `/produto/${item._id}`})">

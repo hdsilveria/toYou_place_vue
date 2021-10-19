@@ -4,7 +4,13 @@
       class="menuNav w-10 text-center fixed-top"
       align-h="center"
     >
+    <b-col align-self="center" md="1" class="text-center">
+      <div id="title-site">
+        <span class="text-nowrap">To You Place&copy;</span>
+      </div>
+    </b-col>
       <b-col
+      class="text-center p-0"
         md="3"
         align-self="center"
       >
@@ -46,7 +52,7 @@
           <b-col class="d-flex">
             <div class="circle"/>&nbsp;
           <span>
-            {{prod.item.length > 17 ? prod.item.substr(0,16) + '...' : prod.item }}
+            {{prod.item.length > 17 ? prod.item.substr(0,15) + '...' : prod.item }}
           </span>
           </b-col>
         </b-row>
@@ -111,5 +117,11 @@ export default {
   left: -5%;
 }
 
+#title-site {
+  border: 2px solid white;
+  border-radius: 10px;
+  width: 130px;
+  font-size: 13pt;
+}
 
 </style>

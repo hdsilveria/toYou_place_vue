@@ -1,5 +1,12 @@
 <template>
   <div>
+    <b-overlay 
+    :show="apiInCall" 
+    rounded="lg" 
+    opacity="0.9" 
+    spinner-type="grow" 
+    spinner-variant="primary"
+    >
     <div>
     <b-row
       align-h="center"
@@ -14,7 +21,7 @@
               <b-row>
                 <b-col md="auto" class="p-0">
                   <div>
-                    <b-img class="img_prod" :src="item.photo" alt="imagem do produto" />
+                    <b-img class="img_prod" :src="item.photo[0]" alt="imagem do produto" />
                   </div>
                 </b-col>
                 <b-col md="7" class="text-center">
@@ -45,6 +52,7 @@
       </b-col>
     </b-row>
     </div>
+    </b-overlay>
   </div>
 </template>
 
@@ -66,7 +74,10 @@ export default {
   },
 
   computed: {
-    ...mapGetters({getProd: 'app/getProducts'})
+    ...mapGetters({
+      getProd: 'app/getProducts', 
+      apiInCall: 'app/getApiInCall'
+    })
   },
 
   methods: {

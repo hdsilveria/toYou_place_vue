@@ -1,5 +1,12 @@
 <template>
   <div>
+    <b-overlay 
+    :show="apiInCall" 
+    rounded="lg" 
+    opacity="0.8" 
+    spinner-type="grow" 
+    spinner-variant="primary"
+    >
     <b-row
       align-h="center"
     >
@@ -100,16 +107,19 @@
 
       <b-row class="mt-5">
           <b-col md="4" class="item_visu p-0" v-for="item in itemsCategory" :key="item.id">
+              <b-popover :target="item._id" triggers="hover" placement="top" delay="50">
+                <template #title>{{item.item}}</template>
+              </b-popover>
               <b-row>
                 <b-col md="auto" class="p-0">
                   <div>
-                    <b-img class="img_prod" :src="item.photo" alt="imagem do produto" />
+                    <b-img class="img_prod" :src="item.photo[0]" alt="imagem do produto" />
                   </div>
                 </b-col>
                 <b-col md="7" class="text-center">
                   <b-row class="text-left">
-                    <strong>
-                      {{item.item}}
+                    <strong :id="item._id">
+                      {{item.item.length > 16 ? item.item.substr(0,16) + '...': item.item}}
                     </strong>
                   </b-row>
                   <b-row>
@@ -130,13 +140,14 @@
                 </b-col>
               </b-row>
             </b-col>
-      </b-row>
+      </b-row> <br>
 
       <b-row>
 
       </b-row>
       </b-col>
     </b-row>
+    </b-overlay>
   </div>
 </template>
 
@@ -164,7 +175,8 @@ export default {
       getOneProd: 'app/getOneProduct', 
       getCart: 'app/getCart',
       getFav: 'app/getFav',
-      getProducts: 'app/getProducts'
+      getProducts: 'app/getProducts',
+      apiInCall: 'app/getApiInCall'
     }),
   },
 
@@ -222,10 +234,8 @@ export default {
     },
 
     addtoFav(val){
-      this.$confirm("Deseja adicionar aos Favoritos?").then(() => {
-        this.addProductToFav(val).then(() => {
-          this.pushData()
-        })
+      this.addProductToFav(val).then(() => {
+        this.pushData()
       })
     }
   }
