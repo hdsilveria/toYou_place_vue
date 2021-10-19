@@ -43,9 +43,10 @@
           Não há items
         </span>
         <b-row v-for="prod in getCart" :key="prod.id">
-          <b-col>
+          <b-col class="d-flex">
+            <div class="circle"/>&nbsp;
           <span>
-            {{prod.item.length > 17 ? prod.item.substr(0,17) + '...' : prod.item }}
+            {{prod.item.length > 17 ? prod.item.substr(0,16) + '...' : prod.item }}
           </span>
           </b-col>
         </b-row>
@@ -64,9 +65,10 @@
           Não há items
         </span>
         <b-row v-for="fav in getFav" :key="fav.id">
-          <b-col>
+          <b-col class="d-flex">
+             <div class="circle"/>&nbsp;
             <span>
-              {{fav.item.length > 17 ? fav.item.substr(0,17) + '...' : fav.item }}
+             {{fav.item.length > 17 ? fav.item.substr(0,16) + '...' : fav.item }}
             </span>
           </b-col>
         </b-row>
@@ -108,5 +110,6 @@ export default {
   top: -10%;
   left: -5%;
 }
+
 
 </style>

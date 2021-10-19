@@ -19,12 +19,14 @@
                 </b-col>
                 <b-col md="7" class="text-center">
                   <b-row class="text-left">
-                    {{item.item}}
+                    <strong>
+                      {{item.item}}
+                    </strong>
                   </b-row>
                   <b-row>
-                    <strong>
-                      R$ {{item.price}}
-                    </strong>
+                    <span>
+                      <small style="text-decoration: line-through;" v-if="item.oldPrice && item.oldPrice > item.price">R${{item.oldPrice}}&nbsp;</small> R${{item.price}}
+                    </span>
                   </b-row>
                   <b-row>
                     <small class="text-nowrap">

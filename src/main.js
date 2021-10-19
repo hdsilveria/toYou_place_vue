@@ -5,6 +5,7 @@ import router from './router'
 
 import './libs/bootstrap'
 import './libs/axios'
+import './libs/vue-alert'
 
 Vue.config.productionTip = false
 require('./assets/scss/index.scss')

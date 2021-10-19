@@ -38,9 +38,9 @@
             <b-col md="4">
                 <div class="box-payment text-center">
                       <b-img v-if="!fav[0]" class="logo-fav text-left" src="../assets/img/favorito.png" @click="addtoFav(getOneProd)" />
-                      <b-img v-else class="logo-fav text-left" src="../assets/img/favorito_2.png" @click="removeFav(getOneProd._id)" />
+                      <b-img v-else class="logo-fav text-left" src="../assets/img/favorito_2.png" @click="removeFav(getOneProd._id)" />&nbsp;&nbsp;&nbsp;
                     <strong class="value">
-                      R$ {{getOneProd.price}} 
+                      <small style="text-decoration: line-through;" v-if="getOneProd.oldPrice && getOneProd.oldPrice > getOneProd.price">R${{getOneProd.oldPrice}}&nbsp;</small> R${{getOneProd.price}}
                     </strong> <br>
                     <span>
                       ou em até 12x de {{((getOneProd.price /12).toFixed(2).replace('.', ',')) }}
@@ -135,8 +135,10 @@ export default {
     },
 
     addtoCart(val){
-      this.addProductToCart(val).then(() => {
-        this.pushData()
+      this.$confirm("Deseja adicionar ao Carrinho?").then(() => { 
+        this.addProductToCart(val).then(() => {
+          this.pushData()
+        })
       })
     },
 
@@ -147,8 +149,10 @@ export default {
     },
 
     addtoFav(val){
-      this.addProductToFav(val).then(() => {
-        this.pushData()
+      this.$confirm("Deseja adicionar aos Favoritos?").then(() => {
+        this.addProductToFav(val).then(() => {
+          this.pushData()
+        })
       })
     }
   }
