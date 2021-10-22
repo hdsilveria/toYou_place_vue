@@ -1,0 +1,20 @@
+.vs__search {
+  background: white !important;
+}
+
+.vs__open-indicator {
+  transform: none !important;
+}
+
+.v-select.vs--single.vs--searchable {
+  background: white !important;
+  border-radius: 5px;
+}
+
+#vs1__listbox li{
+  background: white !important;
+  color: black !important;
+  &:hover {
+    background: rgba(114, 124, 162, 0.452) !important;
+  }
+}

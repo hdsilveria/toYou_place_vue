@@ -51,7 +51,18 @@
             </b-col>
 
             <b-col md="4">
+
                 <div class="box-payment text-center">
+                    <b-row class="text-center p-2">
+                      <b-col>
+                        <span>
+                          <strong>
+                            {{getOneProd.inventory}}
+                          </strong>
+                          Unidades disponiveis. 
+                        </span>
+                      </b-col>
+                    </b-row>
                       <b-img v-if="!fav[0]" class="logo-fav text-left" src="../assets/img/favorito.png" @click="addtoFav(getOneProd)" />
                       <b-img v-else class="logo-fav text-left" src="../assets/img/favorito_2.png" @click="removeFav(getOneProd._id)" />&nbsp;&nbsp;&nbsp;
                     <strong class="value">

@@ -20,9 +20,6 @@
           text="Categorias"
           class="m-md-2 dropdown"
         >
-          <b-dropdown-item>First Action</b-dropdown-item>
-          <b-dropdown-item>Second Action</b-dropdown-item>
-          <b-dropdown-item>Third Action</b-dropdown-item>
         </b-dropdown>
         
       </b-col>
@@ -31,7 +28,34 @@
         align-self="center"
         class="p-0"
       >
-        <b-form-input placeholder="Pesquise seu item desejado" />
+        <v-select
+          v-model="item"
+          :options="items"
+          placeholder="Pesquise seu item favorito!"
+          :dropdown-should-open="dropdownShouldOpen">
+
+          <template #open-indicator="{ attributes }">
+            <b-img src="../../assets/img/lupa.png" style="width: 20px;" v-bind="attributes" />
+          </template>
+
+            <template v-slot:no-options="{ search, searching }">
+              <template v-if="searching">
+                Não há resultados para {{ search }}.
+              </template>
+            </template>
+
+            <template v-slot:option="option">
+              <b-row @click="pushToItem(option._id)">
+                <b-col md="auto">
+                  <b-img style="width: 55px; height: 55px;" :src="option.photo[0]" />
+                </b-col>
+                <b-col>
+                  <span>{{option.label}}</span>
+                </b-col>
+              </b-row>
+            </template>
+        </v-select>
+        <!-- <b-form-input placeholder="Pesquise seu item desejado" /> -->
       </b-col>
       <b-col
         md="2"
@@ -91,11 +115,44 @@
 import {  mapGetters } from 'vuex'
 
 export default {
+  data() {
+    return {
+      item: null,
+      items: []
+    }
+  },
+
+  mounted(){
+    this.getProd.map(arr => {
+      this.items.push({
+        label: arr.item,
+        code: arr.item,
+        photo: arr.photo,
+        _id: arr._id
+      })
+    })
+  },
+
   computed: {
     ...mapGetters({
       getCart: 'app/getCart',
-      getFav: 'app/getFav'
+      getFav: 'app/getFav',
+      getProd: 'app/getProducts', 
       })
+  },
+
+  methods: {
+    pushToItem(val){
+      window.location.assign(`/produto/${val}`) 
+    },
+
+    dropdownShouldOpen(VueSelect) {
+      if (this.item !== null) {
+        return VueSelect.open
+      }
+
+      return VueSelect.search.length !== 0 && VueSelect.open
+    },
   },
 }
 

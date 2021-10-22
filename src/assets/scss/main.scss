@@ -30,3 +30,32 @@ ul {
 body {
   background: rgb(231, 231, 231);
 }
+
+
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px !important;
+  -webkit-border-radius: 16px;
+  border-radius: 16px;
+}
+
+::-webkit-scrollbar-track-piece {
+  background-color: rgba(217, 217, 217, 0);
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:vertical {
+  height: 7px;
+  background-color: $menu-color2;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:horizontal {
+  width: 7px;
+  background-color: $menu-color2;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+
+}

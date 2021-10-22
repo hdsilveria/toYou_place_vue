@@ -8,13 +8,16 @@
 <strong>Libs utilizadas:</strong><br>
 <p>- Vue-router;</p>
 <p>- Vue-simple-alert;</p>
+<p>- Vue-select;</p>
 <p>- Bootstrap-vue;</p>
 <p>- Axios;</p>
 <p>- Vuex;</p>
 <p>- Vuex-persist;</p>
 
+
 <br>
 <img src="./git_img/index.png"><br>
+<img src="./git_img/search.png"><br>
 <img src="./git_img/produto.png"><br>
 <img src="./git_img/favorito.png"><br>
 <img src="./git_img/confirmação_carrinho.png"><br>
